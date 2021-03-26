@@ -1,0 +1,38 @@
+@charset "ISO-8859-1";
+th, td {
+  padding: 15px;
+}
+
+html,body {
+    height:100%;
+    padding:0;
+    background-color:#292b2c;
+}
+
+.full-size {
+	height: 100%;
+}
+
+.center {
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.left {
+	float: left;	
+}
+
+.middle {
+	float: middle;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+}
+
+.button {
+	float: left;
+	margin: 5px;	
+}
