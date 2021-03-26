@@ -20,9 +20,13 @@ public class TaskService {
 		return taskRepository.findAllByUser(user);
 	} 
 	
-	public List<Task> insertTask(Task task) {
+	public List<Task> insertTaskReturnAllTasks(Task task) {
 		taskRepository.save(task);
 		return taskRepository.findAllByUser(task.getUser());
+	}
+	
+	public void insertTask(Task task) {
+		taskRepository.save(task);
 	}
 	
 	public Task findTaskById(Long id) {

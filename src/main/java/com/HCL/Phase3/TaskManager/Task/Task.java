@@ -1,7 +1,5 @@
 package com.HCL.Phase3.TaskManager.Task;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

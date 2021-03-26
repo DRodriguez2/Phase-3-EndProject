@@ -13,17 +13,20 @@
 <body>
 	<div class="container p-3 my-3 bg-dark text-white">
 		<h1>Login</h1>
-		<form  action="loginPage" method="POST">
+		<form  class="pb-3" action="loginPage" method="POST">
 			<div class="form-group">
-				Username: <input type="text" class="form-control" name="username"
+				<label>Username: </label><input type="text" class="form-control" name="username"
 					placeholder="user ID" required>
-				Password: <input type="password" class="form-control" name="password"
+				<label class="pt-3">Password:</label><input type="password" class="form-control" name="password"
 					placeholder="password" required>
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
-			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
-		<div>${result}</div>
+		<a class="btn btn-primary" href="/register">Register</a>
+<!-- 		<form action="/register" method="GET" class="pt-3"><button type="submit" class="btn btn-primary">Register</button> -->
+<!-- 		</form> -->
+		<div class="pt-2">${result}</div>
 	</div>
 </body>
 </html>

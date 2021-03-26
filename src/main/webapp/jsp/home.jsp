@@ -19,7 +19,7 @@
 <!-- 			<div class="jumbotron center bg-dark text-white"> -->
 				
 				<div class="container-fluid p-3 my-3 bg-dark text-white row-full center">
-					<nav class="navbar navbar-expand-sm bg-dark navbar-dark border-bottom border-light py-0">
+					<nav class="navbar navbar-expand-sm bg-dark navbar-dark border-bottom border-light py-0 fixed-top">
 						<ul class="navbar-nav">
 							<li class="nav-item">
 								<a class="navbar-brand">${user.getUsername()}</a>
@@ -41,7 +41,8 @@
 								<th>Email</th>
 								<th>Start Date</th>
 								<th>End Date</th>
-								<th>Update/Delete</th>
+								<th>Update</th>
+								<th>Delete</th>
 							</tr>
 							<c:forEach items="${tasks}" var="task">
 								<tr>
@@ -54,6 +55,8 @@
 									<td><c:out value="${task.getEndDate()}" /></td>
 									<td><form action="/home/edit"><button type="submit" class="btn btn-primary">Select</button><input type="hidden" name="taskId"
 									value="${task.getId()}" /></form></td>
+									<td><form action="/home/deleteTask" method="POST"><button type="submit" class="btn btn-primary">Delete</button><input type="hidden" name="taskId"
+									value="${task.getId()}" /><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></form>
 								</tr>
 							</c:forEach>
 						</table>
@@ -101,7 +104,7 @@
 		</div>
 		<div class="col">
 			<div class="container-fluid p-3 my-3 bg-dark text-white row-full">
-				<h3>Update/Delete Task</h3>
+				<h3>Update Task</h3>
 				<form:form action="/home/updateTask" method="POST" modelAttribute="editTask">
 					<div class="form-group">
 							
@@ -132,8 +135,7 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<form:input type="hidden" path="id" value="${editTask.getId()}" />
 				</form:form>
-				<form action="/home/deleteTask" method="POST"><button type="submit" class="btn btn-primary">Delete</button><input type="hidden" name="taskId"
-									value="${editTask.getId()}" /><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></form>
+				
 			</div>
 		</div>
 	</div>

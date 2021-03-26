@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import com.HCL.Phase3.TaskManager.Task.Task;
 
@@ -19,9 +21,13 @@ import lombok.Setter;
 public class User {
 
 	@Id 
+	@Pattern(regexp="\\A(?!\\s*\\Z).+", message="Value required")
+	@NotEmpty(message="Value required")
 	private String username;
 	
 	@Column(nullable=false)
+	@Pattern(regexp="\\A(?!\\s*\\Z).+", message="Value required")
+	@NotEmpty(message="Value required")
 	private String password;
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)

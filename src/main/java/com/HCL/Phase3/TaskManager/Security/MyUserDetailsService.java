@@ -21,7 +21,7 @@ public class MyUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<com.HCL.Phase3.TaskManager.User.User> user = service.getUser(username);
-		logger.info("authenticating");
+		logger.info("authenticating user");
 		user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
 		
 		return new MyUserDetails(user.get());

@@ -1,7 +1,6 @@
 package com.HCL.Phase3.TaskManager.Security;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,20 +15,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
-import com.HCL.Phase3.TaskManager.Task.Task;
 import com.HCL.Phase3.TaskManager.User.User;
  
-@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired UserDetailsService userDetailsService;
-	//@Autowired BCryptPasswordEncoder encoder;
+	@Autowired private UserDetailsService userDetailsService;
+	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -58,7 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logout()
 				.logoutUrl("/logout")
 				.invalidateHttpSession(true)
-				.permitAll();
+				.permitAll()
+			.and()
+				.exceptionHandling().accessDeniedPage("/denied");
 	}
 	
 //	@Override
@@ -73,7 +72,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-		//return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
+	
+
 }
