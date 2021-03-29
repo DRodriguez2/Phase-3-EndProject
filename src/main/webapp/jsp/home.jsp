@@ -68,7 +68,7 @@
 
 	<div class="row">
 		<div class="col">
-			<div class="container-fluid p-3 my-3 bg-dark text-white row-full">
+			<div class="container p-3 my-3 bg-dark text-white row-full">
 				<h3>Add task</h3>
 				<form:form action="/home/addTask" method="POST" modelAttribute="task">
 					<div class="form-group">
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<div class="col">
-			<div class="container-fluid p-3 my-3 bg-dark text-white row-full">
+			<div class="container p-3 my-3 bg-dark text-white row-full">
 				<h3>Update Task</h3>
 				<form:form action="/home/updateTask" method="POST" modelAttribute="editTask">
 					<div class="form-group">
